@@ -3,16 +3,13 @@ from flask import Flask, request, jsonify, abort
 
 
 app = Flask(__name__)
-webhook = "insert webhook here"
 
 
-@app.route('/hello', methods=['GET','POST'])
-def hello():
-	data = ''
+@app.route('/endpoint', methods=['POST'])
+def endpoint():
 	if request.method == 'POST':      
 		data = request.get_data()
 	return data
-
 
 
 if __name__ == '__main__':
