@@ -8,10 +8,10 @@ webhook = "insert webhook here"
 
 @app.route('/hello', methods=['GET','POST'])
 def hello():
+	data = ''
 	if request.method == 'POST':      
-		data = request.data
-
-		return ({"text": data})
+		data = request.get_data()
+	return data
 
 
 
