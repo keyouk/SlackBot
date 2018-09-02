@@ -1,15 +1,20 @@
 import os
+import freshdesk
 from flask import Flask, request, jsonify, abort
+
 
 
 app = Flask(__name__)
 
 
-@app.route('/endpoint', methods=['POST'])
-def endpoint():
+@app.route('/report', methods=['POST'])
+def report():
 	if request.method == 'POST':      
-		data = request.get_data()
-	return data
+		text = request.form.get('text', None)
+		stats = freshdesk.getTickets(text)
+		
+		return jsonify({"text":stats})
+
 
 
 if __name__ == '__main__':
