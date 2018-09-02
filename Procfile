@@ -1,3 +1,4 @@
-web: python slash.py
+web: gunicorn app:app
+
 
 
