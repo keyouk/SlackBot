@@ -1,7 +1,0 @@
-token=0GIbm9B5JouZKvvqE3bkm8pe&team_id=T8PQQQ0SW&team_domain=celciuswork&channel_id=CC3G1GVA8&channel_name=stuff&user_id=U8PRM0M5J&user_name=kelvin.youk&command=%2Ftest&
-
-
-text=sdk
-
-
-&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT8PQQQ0SW%2F427728295858%2FuQXsTx6XurLtBHTZ89bi4GAN&trigger_id=427728295874.295840816914.aeed4308f8c1d3d228b59196028727c0
