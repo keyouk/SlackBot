@@ -18,4 +18,4 @@ def report():
 
 		data = getTickets(text)
 		
-		return '%ss with highest number of tickets:\n\n%s\nTotal:%s' % (text.capitalize(), ''.join('    {}: {}\n'.format(key, val) for key, val in data[0].items()), data[1])
+		return 'Here are the %ss with the largest amount of tickets:\n\n%s\nTotal:%s' % (text.capitalize(), ''.join('    {}: {}\n'.format(key, val) for key, val in data[0].items()), data[1])
