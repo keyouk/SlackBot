@@ -4,6 +4,7 @@ from freshdesk import getTickets
 from threading import Thread
 import requests
 
+
 app = Flask(__name__)
 
 
@@ -26,13 +27,11 @@ def report():
 
 def sendResponse(text, response_url):
 	data = getTickets(text)
-	SlackMessage = {'text':'Here are the %ss with the largest amount of tickets in the past 30 days:\n\n%s\nTotal:%s' % (text.capitalize(), ''.join('    {}: {}\n'.format(key, val) for key, val in data[0].items()), data[1])}
+	SlackMessage = { "attachments":[
+			{'text':''.join('{}: {}\n'.format(key, val) for key, val in data[0].items())}
+		]
+	}
 	
-	res = requests.post(response_url, json=SlackMessage)
+	r = requests.post(response_url, json=SlackMessage)
 
-
-if __name__ == '__main__':
-	app.debug = True
-	port = int(os.environ.get('PORT', 5000))
-	app.run(host='0.0.0.0', port=port)
 

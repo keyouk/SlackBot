@@ -6,8 +6,8 @@ from freshdesk import getTickets
 app = Flask(__name__)
 
 
-@app.route('/test', methods=['POST'])
-def test():
+@app.route('/report', methods=['POST'])
+def report():
 	if request.method == 'POST':      
 
 		text = request.form.get('text', None)
@@ -17,10 +17,12 @@ def test():
 			return jsonify({'text': "*Sorry, you can only create reports for:* \n    addon\n    category\n   subcategory\n    sdk"})
 
 
-		data = getTickets(text)
-		report = 'Total: %s \n%s' % (data[1], ''.join('{}: {}\n'.format(key, val) for key, val in data[0].items()))
-
-		return report
+	data = getTickets(text)
+	SlackMessage = { "attachments":[
+			{'text':''.join('{}: {}\n'.format(key, val) for key, val in data[0].items())}
+		]
+	}
+	return jsonify(SlackMessage)
 
 
 if __name__ == '__main__':
