@@ -14,7 +14,7 @@ def test():
 		available_reports = ['addon', 'category', 'subcategory', 'sdk']
 		
 		if text not in available_reports:
-			return jsonify({'text': "*Sorry, you can only create reports for:* \n    addon\n    category\n   subcategory\n    sdk", "mrkdwn": true})
+			return jsonify({'text': "*Sorry, you can only create reports for:* \n    addon\n    category\n   subcategory\n    sdk"})
 
 
 		data = getTickets(text)

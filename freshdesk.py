@@ -4,6 +4,8 @@ import requests
 import operator
 
 
+Freshdesk_Token = os.environ.get('Freshdesk_Token')
+
 # Function returns Top 5 results in stats from getTicket
 def sortTicketData(stats):
 	items = 5
@@ -36,7 +38,7 @@ def getTickets(category):
 	while nextPage != False:
 		page += 1
 		r = requests.get(('https://pubnub.freshdesk.com/api/v2/tickets?per_page=100&page=%s') % page, 
-							headers={'Authorization':'MFdEUnh2dE1OY3R6MEExRTBacXY6WAo='}) 
+							headers={'Authorization':Freshdesk_Token}) 
 		data = r.json()
 		
 		for ticket in range(len(data)):
@@ -55,3 +57,4 @@ def getTickets(category):
 			nextPage = False
 
 	return sortTicketData(stats)
+
